@@ -2,7 +2,7 @@
 IOT/Home Automation with MQTT on Raspberry Pi
 Maker: Jonathan van Rijn (jhonniedj)
 
-##Get Started
+## Get Started
 To get started, we need to initialise some settings on the raspberry pi.
 <br>First we start with a clean Raspberry pi, with a Raspbian Lite or Full/Desktop OS
 
@@ -45,7 +45,7 @@ To get started, we need to initialise some settings on the raspberry pi.
 <br>subscribe test with:`mosquitto_sub -t topic`
 <br>publish test with:`mosquitto_pub -t topic -m message`
 
-##Usefull Tools
+## Usefull Tools
 - **Midnight commander:**
 <br>`sudo apt-get install mc`
 <br>run with `sudo mc`
