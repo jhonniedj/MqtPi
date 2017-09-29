@@ -17,7 +17,7 @@ To get started, we need to initialise some settings on the raspberry pi.
 <br>(chang password)
 
 ### **Installing latest safe node.js:**
-<br>`sudo apt-get install node`
+`sudo apt-get install node`
 <br>(updating)
 <br>`wget https://nodejs.org/dist/v6.11.3/node-v6.11.3-linux-armv6l.tar.xz`
 <br>`tar -xvf node-v6.11.3-linux-armv6l.tar.xz`
@@ -30,18 +30,18 @@ To get started, we need to initialise some settings on the raspberry pi.
 <br>`node -v`
 
 ### **Installing NPM (node package manager):**
-<br>`sudo apt-get install npm`
+`sudo apt-get install npm`
 ### **Installing NPM-packages**
-<br>`sudo apt-get install pigpio`
+`sudo apt-get install pigpio`
 <br>`sudo npm install pigpio `
 <br>`sudo npm install mqtt`
 ### **Installing PM2** *(optional)*
-<br>`sudo npm install pm2`
+`sudo npm install pm2`
 <br>*PM2 can be used to run node.js scripts at startup,*
 <br>*monitor scripts or to keep scripts running*
 
 ### **Installing MQTT Broker Mosquitto:**
-<br>`sudo apt-get install mosquitto mosquitto-clients`
+`sudo apt-get install mosquitto mosquitto-clients`
 <br>subscribe test with:`mosquitto_sub -t topic`
 <br>publish test with:`mosquitto_pub -t topic -m message`
 
