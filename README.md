@@ -8,9 +8,9 @@ To get started, we need to initialise some settings on the raspberry pi.
 <br>First we start with a clean Raspberry pi, with a Raspbian Lite or Full/Desktop OS
 
 - **Updating the Rpi**:
-<br>-'sudo apt-get update'
-<br>-'sudo apt-get upgrade'
-<br>-'sudo rpi-update'
+<br> 'sudo apt-get update'
+<br> 'sudo apt-get upgrade'
+<br> 'sudo rpi-update'
 
 - **Customizing your Rpi:** *(optional)*
 <br>-sudo raspi-config
