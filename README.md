@@ -11,12 +11,12 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br>`sudo apt-get upgrade`
 ><br>`sudo rpi-update`
 
->### **Customizing your Rpi:** *(optional)*
+### **Customizing your Rpi:** *(optional)*
 >`sudo raspi-config`
 ><br>(change hostname)
 ><br>(chang password)
 
->### **Installing latest safe node.js:**
+### **Installing latest safe node.js:**
 >`sudo apt-get install node`
 ><br>(updating)
 ><br>`wget https://nodejs.org/dist/v6.11.3/node-v6.11.3-linux-armv6l.tar.xz`
@@ -29,23 +29,23 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br>(checking if version is updated)
 ><br>`node -v`
 
->### **Installing NPM (node package manager):**
+### **Installing NPM (node package manager):**
 >`sudo apt-get install npm`
->### **Installing NPM-packages**
+### **Installing NPM-packages**
 >`sudo apt-get install pigpio`
 ><br>`sudo npm install pigpio `
 ><br>`sudo npm install mqtt`
->### **Installing PM2** *(optional)*
+### **Installing PM2** *(optional)*
 >`sudo npm install pm2`
 ><br>*PM2 can be used to run node.js scripts at startup,*
 ><br>*monitor scripts or to keep scripts running*
 
->### **Installing MQTT Broker Mosquitto:**
+### **Installing MQTT Broker Mosquitto:**
 >`sudo apt-get install mosquitto mosquitto-clients`
 ><br>subscribe test with:`mosquitto_sub -t topic`
 ><br>publish test with:`mosquitto_pub -t topic -m message`
 
->## Usefull Tools
+## Usefull Tools
 >- **Midnight commander:**
 ><br>`sudo apt-get install mc`
 ><br>run with `sudo mc`
