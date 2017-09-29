@@ -7,9 +7,9 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br>First we start with a clean Raspberry pi, with a Raspbian Lite or Full/Desktop OS
 
 ### **Updating the Rpi**:
-`sudo apt-get update`
-<br>`sudo apt-get upgrade`
-<br>`sudo rpi-update`
+>`sudo apt-get update`
+><br>`sudo apt-get upgrade`
+><br>`sudo rpi-update`
 
 ### **Customizing your Rpi:** *(optional)*
 `sudo raspi-config`
