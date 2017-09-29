@@ -46,11 +46,12 @@ To get started, we need to initialise some settings on the raspberry pi.
 <br>subscribe test with:`mosquitto_sub -t topic`
 <br>publish test with:`mosquitto_pub -t topic -m message`
 
-- **Installing other usefull tools** *(optional)*
-<br>Midnight commander:
+Usefull Tools
+==============
+<br>**Midnight commander:**
 <br>`sudo apt-get install mc`
 <br>run with `sudo mc`
-<br>Screen:
+<br>**Screen:**
 <br>`sudo apt-get install screen`
 <br>`screen`
 <br>can be used with CTRL+A, C to go to create new screen
