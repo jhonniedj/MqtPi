@@ -48,9 +48,10 @@ To get started, we need to initialise some settings on the raspberry pi.
 
 Usefull Tools
 ==============
-<br>**Midnight commander:**
+**Midnight commander:**
 <br>`sudo apt-get install mc`
 <br>run with `sudo mc`
+<br>
 <br>**Screen:**
 <br>`sudo apt-get install screen`
 <br>`screen`
