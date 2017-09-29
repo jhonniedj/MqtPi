@@ -1,6 +1,5 @@
 # MqtPi
 IOT/Home Automation with MQTT on Raspberry Pi
-
 Maker: Jonathan van Rijn (jhonniedj)
 
 Get Started
@@ -39,8 +38,8 @@ To get started, we need to initialise some settings on the raspberry pi.
 <br>-sudo npm install mqtt
 - **Installing PM2** *(optional)*
 <br>-sudo npm install pm2
-*PM2 can be used to run node.js scripts at startup,
-<br>monitor scripts or to keep scripts running
+<br>*PM2 can be used to run node.js scripts at startup,*
+<br>*monitor scripts or to keep scripts running*
 
 - **Installing MQTT Broker Mosquitto:**
 <br>-sudo apt-get install mosquitto mosquitto-clients
