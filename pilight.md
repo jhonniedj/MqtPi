@@ -21,7 +21,7 @@ or any other klik-aan-klik-uit related devices, you may need pilight.
 ><br> `sudo pilight-receive`
 
 ## Install as service (optional)
-><br> `sudo nano /etc/init.d/MqtPi`
+> `sudo nano /etc/init.d/MqtPi`
 ><br> copy contents of MqtPi file
 ><br> `sudo chmod 755 /etc/init.d/MqtPi`
 ><br> `sudo sh /etc/init.d/MqtPi start` (or `sudo service MqtPi start` after reboot)
