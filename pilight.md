@@ -1,8 +1,7 @@
-# MqtPi
-IOT/Home Automation with MQTT on Raspberry Pi
-Maker: Jonathan van Rijn (jhonniedj)
+# Install pilight
+To work with 433Mhz sender/receiver, to remote control your power sockets,
+or any other klik-aan-klik-uit related devices, you may need pilight.
 
-## Install pilight
 ### Downgrade the kernel (since 4.9 does not work with a lot su)
 > `sudo rpi-update 52241088c1da59a359110d39c1875cda56496764`
 ><br> `sudo reboot`
