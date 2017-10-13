@@ -55,8 +55,7 @@ Maker: Jonathan van Rijn (jhonniedj)
 ### **Installing Samba:**
 >`sudo apt-get install samba samba-common-bin`
 >`sudo nano /etc/samba/smb.conf`
->Copy/Paste:
->
+><br>Copy/Paste:
 >```
 >[share]
 >Comment = Pi shared folder
