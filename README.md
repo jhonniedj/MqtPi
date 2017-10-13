@@ -55,10 +55,7 @@ Maker: Jonathan van Rijn (jhonniedj)
 ### **Installing Samba:**
 >`sudo apt-get install samba samba-common-bin`
 >`sudo nano /etc/samba/smb.conf`
-<<<<<<< HEAD
-=======
 ><br>
->>>>>>> 97d34eb91612577dd582643a215b032ab9f6dfd0
 ><br>Copy/Paste:
 >```
 >[share]
