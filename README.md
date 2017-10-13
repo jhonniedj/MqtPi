@@ -18,6 +18,8 @@ Maker: Jonathan van Rijn (jhonniedj)
 >`sudo raspi-config`
 ><br>(change hostname)
 ><br>(change password)
+><br>Removing MOTD:
+>`sudo nano /etc/motd`, then remove all lines and save with CTRL+X, Y
 
 ### **Installing latest current node.js:**
 >`sudo apt-get install node`
@@ -35,10 +37,13 @@ Maker: Jonathan van Rijn (jhonniedj)
 >`sudo apt-get install npm`
 ### **Installing NPM-packages**
 >`sudo apt-get install pigpio`
-><br>`sudo npm install pigpio -g && npm link pigpio`
-><br>`sudo npm install mqtt -g && npm link mqtt`
+><br>`sudo npm install pigpio -g`
+><br>`npm link pigpio`
+><br>`sudo npm install mqtt -g`
+><br>`npm link mqtt`
 ### **Installing PM2** *(optional)*
 >`sudo npm install pm2 -g`
+>`sudo pm2 startup`
 ><br>*PM2 can be used to run node.js scripts at startup,*
 ><br>*monitor scripts or to keep scripts running*
 
@@ -46,6 +51,22 @@ Maker: Jonathan van Rijn (jhonniedj)
 >`sudo apt-get install mosquitto mosquitto-clients`
 ><br>subscribe test with:`mosquitto_sub -t topic`
 ><br>publish test with:`mosquitto_pub -t topic -m message`
+
+### **Installing Samba:**
+>`sudo apt-get install samba samba-common-bin`
+>`sudo nano /etc/samba/smb.conf`
+>Copy/Paste:
+>```[share]
+Comment = Pi shared folder
+Path = /
+Browseable = yes
+Writeable = Yes
+only guest = no
+create mask = 0777
+directory mask = 0777
+Public = yes
+Guest ok = yes```
+>`sudo /etc/init.d/samba restart`
 
 ## Usefull Tools
 >- **Midnight commander:**
