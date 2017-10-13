@@ -17,18 +17,30 @@ Maker: Jonathan van Rijn (jhonniedj)
 ### **Customizing your Rpi:** *(optional)*
 >`sudo raspi-config`
 ><br>(change hostname)
-><br>(chang password)
+><br>(change password)
 
-### **Installing latest safe node.js:**
->`sudo apt-get install node`
+### **Installing latest LTS node.js:**
+>`sudo apt-get install node` (will install node )
 ><br>(updating)
-><br>`wget https://nodejs.org/dist/v6.11.3/node-v6.11.3-linux-armv6l.tar.xz`
+><br>`wget https://nodejs.org/dist/v6.11.3/node-v6.11.3-linux-armv6l.tar.xz` for LTS
 ><br>`tar -xvf node-v6.11.3-linux-armv6l.tar.xz`
-><br>`cd node-v6.11.3-linux-armv6l.tar.xz`
+><br>`cd node-v6.11.3-linux-armv6l/`
 ><br>`sudo cp -R * /usr/local/`
 ><br>(cleaning up)
-><br>`rm node-v6.11.3-linux-armv6l.tar.xz`
-><br>`rm -rf node-v6.11.3-linux-armv6l.tar.xz`
+><br>`cd && rm node-v6.11.3-linux-armv6l.tar.xz && rm -rf node-v6.11.3-linux-armv6l/`
+><br>(checking if version is updated)
+><br>`node -v`
+
+
+### **Installing latest current node.js:**
+>`sudo apt-get install node`
+><br>(updating)
+><br>`wget https://nodejs.org/dist/v8.7.0/node-v8.7.0-linux-armv6l.tar.xz` for current
+><br>`tar -xvf node-v8.7.0-linux-armv6l.tar.xz`
+><br>`cd node-v8.7.0-linux-armv6l/`
+><br>`sudo cp -R * /usr/local/`
+><br>(cleaning up)
+><br>`cd && rm node-v8.7.0-linux-armv6l.tar.xz && rm -rf node-v8.7.0-linux-armv6l/`
 ><br>(checking if version is updated)
 ><br>`node -v`
 
@@ -36,10 +48,10 @@ Maker: Jonathan van Rijn (jhonniedj)
 >`sudo apt-get install npm`
 ### **Installing NPM-packages**
 >`sudo apt-get install pigpio`
-><br>`sudo npm install pigpio `
-><br>`sudo npm install mqtt`
+><br>`sudo npm install pigpio -g && npm link pigpio`
+><br>`sudo npm install mqtt -g && npm link mqtt`
 ### **Installing PM2** *(optional)*
->`sudo npm install pm2`
+>`sudo npm install pm2 -g`
 ><br>*PM2 can be used to run node.js scripts at startup,*
 ><br>*monitor scripts or to keep scripts running*
 
