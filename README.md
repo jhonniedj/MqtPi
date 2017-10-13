@@ -7,9 +7,12 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br>First we start with a clean Raspberry pi, with a Raspbian Lite or Full/Desktop OS
 
 ### **Updating the Rpi**:
->`sudo apt-get update`
+>`sudo rpi-update` for latest kernel
+><br>`sudo rpi-update 52241088c1da59a359110d39c1875cda56496764` for kernel 4.4.50+ (stable for pilight)
+><br>`sudo rpi-update b9becbbf3f48e39f719ca6785d23c53ee0cdbe49` for kernel 4.9.41+
+><br>`sudo apt-get update`
 ><br>`sudo apt-get upgrade`
-><br>`sudo rpi-update`
+><br>`sudo apt-get dist-upgrade`
 
 ### **Customizing your Rpi:** *(optional)*
 >`sudo raspi-config`
