@@ -55,17 +55,19 @@ Maker: Jonathan van Rijn (jhonniedj)
 ### **Installing Samba:**
 >`sudo apt-get install samba samba-common-bin`
 >`sudo nano /etc/samba/smb.conf`
->Copy/Paste:
->```[share]
-Comment = Pi shared folder
-Path = /
-Browseable = yes
-Writeable = Yes
-only guest = no
-create mask = 0777
-directory mask = 0777
-Public = yes
-Guest ok = yes```
+><br>Copy/Paste:
+>```
+>[share]
+>Comment = Pi shared folder
+>Path = /
+>Browseable = yes
+>Writeable = Yes
+>only guest = no
+>create mask = 0777
+>directory mask = 0777
+>Public = yes
+>Guest ok = yes
+>```
 >`sudo /etc/init.d/samba restart`
 
 ## Usefull Tools
