@@ -57,7 +57,8 @@ Maker: Jonathan van Rijn (jhonniedj)
 >`sudo nano /etc/samba/smb.conf`
 ><br>
 ><br>Copy/Paste:
->```[share]
+>```
+>[share]
 >Comment = Pi shared folder
 >Path = /
 >Browseable = yes
