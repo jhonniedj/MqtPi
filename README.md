@@ -19,19 +19,6 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br>(change hostname)
 ><br>(change password)
 
-### **Installing latest LTS node.js:**
->`sudo apt-get install node` (will install node )
-><br>(updating)
-><br>`wget https://nodejs.org/dist/v6.11.3/node-v6.11.3-linux-armv6l.tar.xz` for LTS
-><br>`tar -xvf node-v6.11.3-linux-armv6l.tar.xz`
-><br>`cd node-v6.11.3-linux-armv6l/`
-><br>`sudo cp -R * /usr/local/`
-><br>(cleaning up)
-><br>`cd && rm node-v6.11.3-linux-armv6l.tar.xz && rm -rf node-v6.11.3-linux-armv6l/`
-><br>(checking if version is updated)
-><br>`node -v`
-
-
 ### **Installing latest current node.js:**
 >`sudo apt-get install node`
 ><br>(updating)
