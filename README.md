@@ -54,11 +54,10 @@ Maker: Jonathan van Rijn (jhonniedj)
 
 ### **Installing Samba:**
 >`sudo apt-get install samba samba-common-bin`
->`sudo nano /etc/samba/smb.conf`
+><br>`sudo nano /etc/samba/smb.conf`
 ><br>
 ><br>Copy/Paste:
->```
->[share]
+><br>```[root]
 >Comment = Pi shared folder
 >Path = /
 >Browseable = yes
