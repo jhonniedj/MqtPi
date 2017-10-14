@@ -37,10 +37,8 @@ Maker: Jonathan van Rijn (jhonniedj)
 >`sudo apt-get install npm`
 ### **Installing NPM-packages**
 >`sudo apt-get install pigpio`
-><br>`sudo npm install pigpio -g`
-><br>`npm link pigpio`
-><br>`sudo npm install mqtt -g`
-><br>`npm link mqtt`
+><br>`sudo npm install pigpio`
+><br>`sudo npm install mqtt`
 ### **Installing PM2** *(optional)*
 >`sudo npm install pm2 -g`
 >`sudo pm2 startup`
@@ -69,6 +67,7 @@ Maker: Jonathan van Rijn (jhonniedj)
 >Public = yes
 >Guest ok = yes
 >```
+>`sudo smbpasswd -a pi`
 >`sudo /etc/init.d/samba restart`
 
 ## Usefull Tools
