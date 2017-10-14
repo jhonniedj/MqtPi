@@ -41,9 +41,23 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br>`sudo npm install mqtt`
 ### **Installing PM2** *(optional)*
 >`sudo npm install pm2 -g`
->`sudo pm2 startup`
+>`sudo pm2 startup` to run at startup
 ><br>*PM2 can be used to run node.js scripts at startup,*
 ><br>*monitor scripts or to keep scripts running*
+
+### **Run a script as a PM2 service (optional)**
+> `sudo pm2 start test.js -e test-err.log -o test-out.log --watch -i max`
+><br> `sudo pm2 start test.js -e test-err.log -o test-out.log -i max`
+><br> `sudo pm2 list`
+><br> `sudo pm2 delete all`
+><br> `sudo pm2 save`
+><br> `sudo reboot` to check if the scripts runs at startup
+><br> 
+><br> You can check logs from your: `nano test-err.log`
+><br> You can check errors from your: `nano test-out.log`
+><br> `ps aux | grep pm2` to check if nodes are running
+><br> `sudo kill -9 <PROCESS ID>` to kill nodes
+
 
 ### **Installing MQTT Broker Mosquitto:**
 >`sudo apt-get install mosquitto mosquitto-clients`
@@ -84,3 +98,13 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br>can be used with CTRL+A, D to go to discard screen
 ><br>can be used with CTRL+D to go to destroy session
 ><br>`screen-r` *(to recover session)*
+>
+>- **Crontab (scheduled run)**
+><br>`sudo nano /etc/rsyslog.conf`
+><br>uncomment `# cron.*                        /var/log/cron.log` by removing the `#`
+><br>`sudo apt-get install postfix`
+><br>
+><br>`sudo crontab -e` to edit
+><br>then add something like `*/1 * * * * node debug.js` 
+><br>to run debug.js every minute
+><br>`sudo crontab -l` to list

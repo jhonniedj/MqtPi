@@ -19,19 +19,3 @@ or any other klik-aan-klik-uit related devices, you may need pilight.
 ><br>
 ><br> `sudo pilight-daemon`
 ><br> `sudo pilight-receive`
-
-## Install as service (optional)
-> `sudo nano /etc/init.d/MqtPi`
-><br> copy contents of MqtPi file
-><br> `sudo chmod 755 /etc/init.d/MqtPi`
-><br> `sudo sh /etc/init.d/MqtPi start` (or `sudo service MqtPi start` after reboot)
-><br> `sudo update-rc.d MqtPi defaults` to run service on startup
-><br> 
-><br> You can check logs from your: `nano /var/log/MqtPi.log`
-><br> You can check errors from your: `nano /var/log/MqtPi.err`
-><br> `ps aux | grep node` to check if nodes are running
-><br> `sudo kill -9 <PROCESS ID>` to kill nodes
-
-
- 
-
