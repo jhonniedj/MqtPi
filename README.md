@@ -99,12 +99,18 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br>can be used with CTRL+D to go to destroy session
 ><br>`screen-r` *(to recover session)*
 >
->- **Crontab (scheduled run)**
-><br>`sudo nano /etc/rsyslog.conf`
-><br>uncomment `# cron.*                        /var/log/cron.log` by removing the `#`
-><br>`sudo apt-get install postfix`
-><br>
+>- **Crontab (scheduled run):**
 ><br>`sudo crontab -e` to edit
-><br>then add something like `*/1 * * * * node debug.js` 
+><br>then add something like `*/1 * * * * node debug.js > /logs/debug.log 2>&1` 
 ><br>to run debug.js every minute
 ><br>`sudo crontab -l` to list
+><br>
+><br>`sudo nano /etc/rsyslog.conf`
+><br>uncomment `# cron.*                        /var/log/cron.log` by removing the `#`
+><br>`sudo apt-get install postfix` (choose no config)
+><br>`nano /etc/log/cron.log` to read output
+
+>- **NTP Time:**
+><br>`sudo apt-get install ntpdate`
+><br>`sudo ntpdate nl.pool.ntp.org`
+><br>`sudo raspi-config` to set timezone
