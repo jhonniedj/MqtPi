@@ -1,10 +1,9 @@
-# Install piscope
-To check GPIO pin state, piscope is very convenient!
+# DMX
 
-## Start Pigpio Daemon
-> `sudo pigpiod`
-><br> `wget abyz.co.uk/rpi/pigpio/piscope.tar`
-><br> `tar xvf piscope.tar
-><br> `cd PISCOPE`
-><br> `make hf`
+## Set Raspberry Pi UART
+>change /boot/config.txt
+><br> `sudo nano /boot/config.txt` to add:
+><br> `init_uart_clock=16000000`
+><br> `dtoverlay=pi3-disable-bt` or `dtoverlay=pi3-miniuart-bt` for pi3 an bluetooth uart??
+><br>
 ><br> `make install`
