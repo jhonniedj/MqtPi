@@ -8,3 +8,17 @@ To check GPIO pin state, piscope is very convenient!
 ><br> `cd PISCOPE`
 ><br> `make hf`
 ><br> `make install`
+
+
+sudo npm install pigpio -f
+sudo npm install --unsafe-perm pigpio
+
+sudo npm install midi -f
+
+sudo npm cache clean -f
+npm cache clean -f
+sudo npm cache verify 
+npm cache verify 
+
+
+
