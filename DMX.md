@@ -9,7 +9,7 @@
 ><br> `sudo raspi-config` serial, to disable serial port on startup (leave hw enabled)
 ><br> `gpio readall` and make sure RX and TX are configured as ALT0 (for pi3/pi zero w)
 ><br> `sudo reboot`
->now your raspberry should be ready to use higher UART speeds
+><br> now your raspberry should be ready to use higher UART speeds
 
 ><br> `echo "AA" >/dev/ttyAMA0` to send a test message for piscope
 
