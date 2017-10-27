@@ -12,7 +12,7 @@ or any other klik-aan-klik-uit related devices, you may need pilight.
 ><br>
 ><br> `wget -O - http://apt.pilight.org/pilight.key | sudo apt-key add -`
 ><br> `sudo apt-get update`
-><br> `sudo apt-get install pilight`
+><br> `sudo apt-get install pilight -y`
 ><br> `sudo nano /etc/pilight/config.json`
 ><br> check and configure your pins according to:
 ><br> - https://pinout.xyz/#

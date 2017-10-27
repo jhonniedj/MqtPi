@@ -4,7 +4,8 @@ To check GPIO pin state, piscope is very convenient!
 <br>and set Putty to X11 by SSH - X11 - Enable X11 Forwarding in the Putty properties
 
 ## Start Pigpio Daemon
-> `sudo pigpiod`
+> `sudo apt-get install pigpio -y`
+><br> `sudo pigpiod`
 ><br> `wget abyz.co.uk/rpi/pigpio/piscope.tar`
 ><br> `tar xvf piscope.tar`
 ><br> `cd PISCOPE`

@@ -22,7 +22,7 @@ Maker: Jonathan van Rijn (jhonniedj)
 >`sudo nano /etc/motd`, then remove all lines and save with CTRL+X, Y
 
 ### **Installing latest current node.js:**
->`sudo apt-get install node`
+>`sudo apt-get install node -y`
 ><br>(updating)
 ><br>`wget https://nodejs.org/dist/v8.7.0/node-v8.7.0-linux-armv6l.tar.xz` for current
 ><br>`tar -xvf node-v8.7.0-linux-armv6l.tar.xz`
@@ -34,10 +34,11 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br>`node -v`
 
 ### **Installing NPM (node package manager):**
->`sudo apt-get install npm`
+>`sudo apt-get install npm -y`
 ### **Installing NPM-packages**
->`sudo apt-get install pigpio`
-><br>`sudo npm install pigpio`
+>`sudo apt-get install pigpio -y`
+><br>`sudo npm install --unsafe-perm pigpio`
+><br>`sudo npm install --unsafe-perm midi`
 ><br>`sudo npm install mqtt`
 ### **Installing PM2** *(optional)*
 >`sudo npm install pm2 -g`
@@ -52,12 +53,14 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br> `sudo pm2 delete all`
 ><br> `sudo pm2 save`
 ><br> `sudo reboot` to check if the scripts runs at startup
+><br> `sudo pm2 list` to see all PM2 running services
+><br> `sudo pm2 delete test` to stop PM2 process 'test'
+><br> `sudo pm2 restart test` to restart PM2 process 'test' 
 ><br> 
 ><br> You can check logs from your: `nano test-err.log`
 ><br> You can check errors from your: `nano test-out.log`
-><br> `ps aux | grep pm2` to check if nodes are running
-><br> `sudo kill -9 <PROCESS ID>` to kill nodes
-
+><br> ~~`ps aux | grep pm2` to check if nodes are running~~
+><br> ~~`sudo kill -9 <PROCESS ID>` to kill nodes~~
 
 ### **Installing MQTT Broker Mosquitto:**
 >`sudo apt-get install mosquitto mosquitto-clients`
@@ -87,7 +90,7 @@ Maker: Jonathan van Rijn (jhonniedj)
 ## Usefull Tools
 >- **Midnight commander:**
 ><br>`sudo apt-get install mc`
-><br>run with `sudo mc`
+><br>run with `sudo mc` 
 >
 >- **Screen:**
 ><br>`sudo apt-get install screen`
