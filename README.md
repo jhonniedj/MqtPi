@@ -110,7 +110,7 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br>`sudo apt-get install postfix` (choose no config)
 ><br>`nano /etc/log/cron.log` to read output
 
->- **NTP Time:**
-><br>`sudo apt-get install ntpdate`
-><br>`sudo ntpdate nl.pool.ntp.org`
+>- **NTP Time:** (not needed, just setup timezone)
 ><br>`sudo raspi-config` to set timezone
+><br>~~`sudo apt-get install ntpdate`~~
+><br>~~`sudo ntpdate nl.pool.ntp.org`~~
