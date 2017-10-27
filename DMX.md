@@ -19,7 +19,7 @@
 ><br> `sudo apt-get install minicom -y` to install serial terminal
 ><br> `minicom -b 1000000 -D /dev/ttyAMA0` to test at 1.000.000 baud terminal
 
-sudo stty -F /dev/ttyAMA0 250000
+sudo stty -F /dev/ttyAMA0 230400
 minicom -b 1000000 -D /dev/ttyAMA0 
 
 ><br> `sudo apt-get install libasound2-dev -y`
