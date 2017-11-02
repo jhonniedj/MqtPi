@@ -1,22 +1,29 @@
-var mqtt = require('mqtt');
-var HOST = "localhost";
-var client = mqtt.connect('mqtt://' + HOST);
+var Gpio = require('pigpio').Gpio;
+var led_power = new Gpio(18, { mode: Gpio.OUTPUT });
+var ledr = new Gpio(23, { mode: Gpio.OUTPUT });
+var ledg = new Gpio(24, { mode: Gpio.OUTPUT });
+var ledb = new Gpio(25, { mode: Gpio.OUTPUT });
 
 const { spawn } = require('child_process');
 const exec = require('child_process').exec;
 const fs = require('fs');
-const RUNFILE = "fade.js"
-const DEBUGFILE = "fade.log"
+const RUNFILE = "/home/pi/fade.js"
+const DEBUGFILE = "/home/pi/fade.log"
 
 //var exec = require('child_process').exec;
 exec('sudo pilight-daemon');
 
-var Gpio = require('pigpio').Gpio;
-var lamp = new Gpio(4, { mode: Gpio.OUTPUT });
-var ledr = new Gpio(15, { mode: Gpio.OUTPUT });
-var ledg = new Gpio(18, { mode: Gpio.OUTPUT });
-var ledb = new Gpio(14, { mode: Gpio.OUTPUT });
-var DC = 0;
+var mqtt = require('mqtt');
+var HOST = "localhost";
+var client = mqtt.connect('mqtt://' + HOST);
+
+var admin = require("firebase-admin");
+var serviceAccount = require("/home/pi/mqtpi-nl-firebase.json");
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://mqtpi-nl.firebaseio.com"
+});
 
 led_off();
 
@@ -38,20 +45,55 @@ function MQTT_datahandle(topic, message) {
     d = d.trim();
 
     if (topic === "deur/button") {
-        if (d === "tring!") {
+        console.log('Topic deur/button!!');
+
+        //if (d === "tring!") {
+        if (d.search("tring!") !== -1) {
             console.log('Ding Dong!!');
+            fb_bell();
             led_flash();
             led_flash();
             led_flash();
             led_flash();
         }
     }
-
-    if (topic === "gpio/alarm") {
+    if (topic === "gpio/alarm/go") {
         led_fade();
         //add_cron("0 5 * * 1-5");//elke ma-vrij 5:00
     }
+    if (topic === "gpio/alarm/time_set") {
+        console.log("Received Cron Time String:" + d);
+        clear_cron();
 
+        var time_splitted;
+        if (d.indexOf("|") > -1) {
+            time_splitted = d.split("|");
+            for (var i = 0; i < time_splitted.length; i++) {
+                if (time_splitted[i].indexOf("*") > -1) {
+                    console.log("Adding More Cron:" +  time_splitted[i]);
+                    //client.publish('gpio/test', + time_splitted[i]);
+                    add_cron(time_splitted[i]);
+                }
+            }
+        }
+        else {//if (d.indexOf("|") === -1) {
+            if (d.indexOf("*") > -1) {
+                console.log("Adding Single Cron:" + d);
+                //client.publish('gpio/test', + d);
+                add_cron(d);
+            }
+        }
+    }
+
+
+    //add_cron("0 5 * * 1-5");//elke ma-vrij 5:00
+    if (topic === "gpio/alarm/time_get") {
+        //cron_backup();
+        print_cron();
+    }
+    if (topic === "gpio/alarm/pause") {
+        led_fade_kill()
+    }
     if (topic === "gpio/red") {
         if (d > 255) { ledr_pwm(255); }
         else { ledr_pwm(d); }
@@ -66,69 +108,97 @@ function MQTT_datahandle(topic, message) {
         if (d > 255) { ledb_pwm(255); }
         else { ledb_pwm(d); }
     }
-
-    //console.log('connection data from %s: %j', remoteAddress, d);
-    if (topic !== "gpio/red" && topic !== "gpio/green" && topic !== "gpio/blue") {
+    //versterker
+    if (topic === "gpio/amp" && d === "0") {
+        console.log('amplifier is turned off');
+        exec('sudo pilight-send -p kaku_switch -i 39661568 -u 14 -f');
+    }
+    if (topic === "gpio/amp" && d === "1") {
+        console.log('amplifier is turned off');
+        exec('sudo pilight-send -p kaku_switch -i 39661568 -u 14 -t');
+    }
+    //lamp woonkamer
+    if (topic === "gpio/lamp" && d === "0") {
+        console.log('lamp is turned off');
+        exec('sudo pilight-send -p kaku_switch -i 39661568 -u 1 -f');
+    }
+    if (topic === "gpio/lamp" && d === "1") {
+        console.log('lamp is turned off');
+        exec('sudo pilight-send -p kaku_switch -i 39661568 -u 1 -t');
+    }
+    //ledstrip
+    if (topic === "gpio/led/power") {
         if (d === "0") {
-            //led_off();
-            if (topic === "gpio/amp") {
-                console.log('amplifier is turned off');
-                exec('sudo pilight-send -p kaku_switch -i 39661568 -u 14 -f');
-            }
-            else if (topic === "gpio/lamp") {
-                console.log('lamp is turned off');
-                exec('sudo pilight-send -p kaku_switch -i 39661568 -u 1 -f');
-            }
-            else {
-                led_off();
-                clearInterval(fade_timer);
-            }
-            //console.log(topic);
+            led_power.digitalWrite(1);
         }
-        else if (d === "1") {
-            //led_on();
-            if (topic === "gpio/amp") {
-                console.log('amplifier is turned on');
-                exec('sudo pilight-send -p kaku_switch -i 39661568 -u 14 -t');
-            }
-            else if (topic === "gpio/lamp") {
-                console.log('lamp is turned on');
-                exec('sudo pilight-send -p kaku_switch -i 39661568 -u 1 -t');
-            }
-            else {
-                led_on();
-            }
+        if (d === "1") {
+            led_power.digitalWrite(0);
         }
-        else if (d === "2") {
+    }
+    if (topic === "gpio/led") {
+        if (d === "0") {
+            led_off();
+            clearInterval(fade_timer);
+        }
+        if (d === "1") {
+            led_on();
+        }
+        if (d === "2") {
             //led_flash();
             ledr_pwm(222);
-            ledg_pwm(51);
-            ledb_pwm(254);          
-            console.log('led is NOT set to flicker');
+            ledg_pwm(151);
+            ledb_pwm(254);
         }
-        else if (!d.search("<d-")) {
-            var dimmerdata = d.replace("<d-", "");
-            dimmerdata = dimmerdata.replace(">", "");
-            var dimmerdata_round = Math.round(dimmerdata * 2.55);
-            console.log('dimmerdata:' + dimmerdata_round);
+        if (d === "sleep") {
+            sleep_led();
+        }
+        if (d === "dimm") {
+            dimm_led();
+        }
+
+    }
+    if (topic === "gpio/led/dimmer") {
+        //var dimmerdata = d.replace("<d-", "");
+        //dimmerdata = dimmerdata.replace(">", "");
+        //var dimmerdata_round = Math.round(dimmerdata * 2.55);
+        if (d > 1) {
+            var dimmerdata_round = Math.round(d * 1.55) + 100;
+            //console.log('dimmerdata:' + dimmerdata_round);
             if (dimmerdata_round > 255) { led_pwm(255); }
             else { led_pwm(dimmerdata_round); }
         }
-        else {
-            //conn.write('DATA received:[' + d.toUpperCase() + ']');
-            console.log('DATA:[' + d + ']');
-        }
+        else { led_off(); }
     }
 }
+var sleep_led_timeout;
+function sleep_led() {
+    clearTimeout(sleep_led_timeout);
+    dimm_led()
+    sleep_led_timeout = setTimeout(function () {
+        led_off();
+    }, 20000);//35 sec
+}
+function dimm_led() {
+    ledr_pwm(150);
+    ledg_pwm(120);
+    ledb_pwm(0);
+}
+
+function led_fade_kill() {
+    clearInterval(fade_timer);
+}
+
 var fade_timer;
-function led_fade(){
+function led_fade() {
+    clearInterval(fade_timer);
     var i = 110;//90
     fade_timer = setInterval(function () {
         //console.log(i);
         if (i < 235) {//230
-	    ledr_pwm(i - 5);//-5
+            ledr_pwm(i - 5);//-5
             ledg_pwm(i - 20 - 40);//-20
-            ledb_pwm(i - 40);}
+            ledb_pwm(i - 40);
+        }
         //led_pwm(i);
         if (i == 235) { ledr_pwm(228); ledg_pwm(234); ledb_pwm(229); }
         if (i > 235) {
@@ -143,7 +213,7 @@ function led_fade(){
         i += 1;
         if (i > 255) {
             i = 110;
-             clearInterval(fade_timer);
+            clearInterval(fade_timer);
         }//clearInterval(fade_timer); }
     }, 4138); //10*60.000 = 10 min / 145 steps = 4137
 }
@@ -189,34 +259,48 @@ function PWM_pulse() {
         }
     }, 20);
 }
+
+var pwm_r, pwm_g, pwm_b;
 function ledr_pwm(pwm_value) {
+    pwm_r = pwm_value;
     ledr.pwmWrite(pwm_value);
+    power_check();
 }
 
 function ledg_pwm(pwm_value) {
+    pwm_g = pwm_value;
     ledg.pwmWrite(pwm_value);
+    power_check();
 }
 
 function ledb_pwm(pwm_value) {
+    pwm_b = pwm_value;
     ledb.pwmWrite(pwm_value);
+    power_check();
 }
 
 function led_pwm(pwm_value) {
-    ledr.pwmWrite(pwm_value);
-    ledg.pwmWrite(pwm_value);
-    ledb.pwmWrite(pwm_value);
+    pwm_r = pwm_g = pwm_b = pwm_value;
+    ledr_pwm(pwm_value);
+    ledg_pwm(pwm_value);
+    ledb_pwm(pwm_value);
+    power_check();
+}
+function power_check() {
+    if (pwm_r === 0 && pwm_g === 0 && pwm_b === 0) {
+        led_power.digitalWrite(1);
+    }
+    else { led_power.digitalWrite(0); }
 }
 
 function led_on() {
-    ledr.digitalWrite(1);
-    ledg.digitalWrite(1);
-    ledb.digitalWrite(1);
+    clearTimeout(sleep_led_timeout);
+    led_pwm(255);
 }
 
 function led_off() {
-    ledr.digitalWrite(0);
-    ledg.digitalWrite(0);
-    ledb.digitalWrite(0);
+    clearTimeout(sleep_led_timeout);
+    led_pwm(0);
 }
 
 
@@ -231,7 +315,16 @@ function print_cron() {
     exec('crontab -l', function (error, stdout, stderr) {
         const output = stdout + stderr;
         console.log('Cron entry:');
-        console.log(output.trim());
+        //        console.log(output.trim());
+        var time_out = output.trim();
+
+        if (time_out.search("no crontab for") > -1) { time_out = ""; }
+        time_out = time_out.replace(new RegExp('/usr/local/bin/node /home/pi/fade.js > /home/pi/fade.log 2>&1', 'g'), ' | ');//replace cron with seperator " | "
+        time_out = time_out.replace(new RegExp('\n', 'g'), '');
+        if (time_out.search(" | ") > -1) { time_out = time_out.slice(0, -3); } //remove last " | "
+        console.log(time_out.trim());
+
+        client.publish('gpio/alarm/time', time_out.toString());
     });
 }
 
@@ -280,4 +373,54 @@ function write_backup(text) {
         //console.log("DATA: "+data);
         console.log("backup made in: " + backup_filename);
     });
+}
+
+function fb_bell() {
+    // The topic name can be optionally prefixed with "/topics/".
+    const topic = "deur";
+
+    // See the "Defining the message payload" section below for details
+    // on how to define a message payload.
+    var payload = {
+        data: {
+            id: 'data',
+            title: "Deurbel",
+            body: "Er staat iemand bij de deur!",
+            priority: "high",
+            sound: 'default'
+        }
+    };
+
+    var payload_1 = {
+        notification: {
+            id: 'notification',
+            title: "Deurbel",
+            body: "Er staat iemand bij de deur!",
+            priority: "high",
+            sound: 'default'
+        }
+    };
+
+    admin.messaging().sendToTopic(topic, payload_1)
+        .then(function (response) {
+            // See the MessagingTopicResponse reference documentation for the
+            // contents of response.
+            //console.log("Successfully sent message:", response);
+        })
+        .catch(function (error) {
+            console.log("Error sending message:", error);
+        });
+
+    setTimeout(function () {// Send a message to devices subscribed to the provided topic.
+        // Send a message to devices subscribed to the provided topic.
+        admin.messaging().sendToTopic(topic, payload)
+            .then(function (response) {
+                // See the MessagingTopicResponse reference documentation for the
+                // contents of response.
+                //console.log("Successfully sent message:", response);
+            })
+            .catch(function (error) {
+                console.log("Error sending message:", error);
+            });
+    }, 1000);//3 sec
 }

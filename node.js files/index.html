@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="apple-touch-startup-image" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="MqtPi">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width = 280, initial-scale = 1.1, user-scalable = no">
+</head>
+
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#red_plus").click(function () {
+        $('#r').val(function (i, oldval) { return ++oldval; });
+        r_changer();
+      });
+      $("#red_min").click(function () {
+        $('#r').val(function (i, oldval) { return --oldval; });
+        r_changer();
+      });
+
+      $("#green_plus").click(function () {
+        $('#g').val(function (i, oldval) { return ++oldval; });
+        g_changer();
+      });
+      $("#green_min").click(function () {
+        $('#g').val(function (i, oldval) { return --oldval; });
+        g_changer();
+      });
+
+      $("#blue_plus").click(function () {
+        $('#b').val(function (i, oldval) { return ++oldval; });
+        b_changer();
+      });
+      $("#blue_min").click(function () {
+        $('#b').val(function (i, oldval) { return --oldval; });
+        b_changer();
+      });
+
+      $("#all_plus").click(function () {
+        $('#r').val(function (i, oldval) { return ++oldval; });
+        $('#g').val(function (i, oldval) { return ++oldval; });
+        $('#b').val(function (i, oldval) { return ++oldval; });
+        r_changer();
+        g_changer();
+        b_changer();
+      });
+
+      $("#all_min").click(function () {
+        $('#r').val(function (i, oldval) { return --oldval; });
+        $('#g').val(function (i, oldval) { return --oldval; });
+        $('#b').val(function (i, oldval) { return --oldval; });
+        r_changer();
+        g_changer();
+        b_changer();
+      });
+
+    });
+    function send(send_data, send_value) {
+      if (send_data === 'lamp') {
+        $.ajax({
+          url: 'http://jhonnie:8080/', type: 'GET', data: { lamp: send_value }, success: function (msg) { }
+        });
+      }
+      if (send_data === 'amp') {
+        $.ajax({
+          url: 'http://jhonnie:8080/', type: 'GET', data: { amp: send_value }, success: function (msg) { }
+        });
+      }
+      if (send_data === 'R') {
+        $.ajax({
+          url: 'http://jhonnie:8080/', type: 'GET', data: { R: send_value }, success: function (msg) { }
+        });
+      }
+      if (send_data === 'G') {
+        $.ajax({
+          url: 'http://jhonnie:8080/', type: 'GET', data: { G: send_value }, success: function (msg) { }
+        });
+      }
+      if (send_data === 'B') {
+        $.ajax({
+          url: 'http://jhonnie:8080/', type: 'GET', data: { B: send_value }, success: function (msg) { }
+        });
+      }
+
+    }
+  </script>
+  <center>
+    <h2>MqtPi</h2>
+
+  </center>
+  <table style="width:100%">
+    <tr>
+      <td>Lamp</td>
+      <td>
+        <button type="button" onclick="send('lamp','1');">ON</button>
+      </td>
+      <td>
+        <button type="button" onclick="send('lamp','0');">OFF</button>
+      </td>
+    </tr>
+    <tr>
+      <td>Verst</td>
+      <td>
+        <button type="button" onclick="send('amp','1');">ON</button>
+      </td>
+      <td>
+        <button type="button" onclick="send('amp','0');">OFF</button>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <br>
+  <button type="button" onClick="history.go(0)">Refresh</button>
+
+</body>
+
+
+<fieldset>
+  <button id="red_min">-</button>
+  <label for="r">R</label>
+  <input type="range" min="0" max="255" id="r" step="1" value="0">
+  <output for="r" id="r_out">0</output>
+  <button id="red_plus">+</button>
+</fieldset>
+
+<fieldset>
+  <button id="green_min">-</button>
+  <label for="g">G</label>
+  <input type="range" min="0" max="255" id="g" step="1" value="0">
+  <output for="g" id="g_out">0</output>
+  <button id="green_plus">+</button>
+</fieldset>
+
+<fieldset>
+  <button id="blue_min">-</button>
+  <label for="b">B</label>
+  <input type="range" min="0" max="255" id="b" step="1" value="0">
+  <output for="b" id="b_out">0</output>
+  <button id="blue_plus">+</button>
+</fieldset>
+
+<button id="all_min">-</button>
+<output id="hex">#000000</output>
+<button id="all_plus">+</button>
+
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Roboto:700);
+  body {
+    /*background-color: rgb(0, 0, 0);*/
+    text-align: center;
+    padding: 40px 0 0 0;
+  }
+
+  fieldset {
+    border: none;
+  }
+
+  output {
+    display: inline-block;
+    min-width: 2.5em;
+  }
+
+  label,
+  output {
+    padding: 2px 9px;
+    border-radius: 3px;
+    font-family: 'Roboto', sans-serif;
+    color: #000;
+    font-size: 1.1em;
+  }
+
+  label[for=r],
+  output[for=r] {
+    background-color: #f00;
+  }
+
+  label[for=g],
+  output[for=g] {
+    background-color: #0f0;
+  }
+
+  label[for=b],
+  output[for=b] {
+    background-color: #00f;
+  }
+
+  #hex {
+    min-width: 2em;
+    font-size: 2em;
+    background: rgba(255, 255, 255, .3);
+  }
+</style>
+<script>
+    var body = document.body,
+      r = document.querySelector('#r'),
+      g = document.querySelector('#g'),
+      b = document.querySelector('#b'),
+      r_out = document.querySelector('#r_out'),
+      g_out = document.querySelector('#g_out'),
+      b_out = document.querySelector('#b_out'),
+      hex_out = document.querySelector('#hex');
+
+    function setColor() {
+      var r_hex = parseInt(r.value, 10).toString(16),
+        g_hex = parseInt(g.value, 10).toString(16),
+        b_hex = parseInt(b.value, 10).toString(16),
+        hex = "#" + pad(r_hex) + pad(g_hex) + pad(b_hex);
+      //body.style.backgroundColor = hex;
+      hex_out.value = hex;
+    }
+
+    function pad(n) {
+      return (n.length < 2) ? "0" + n : n;
+    }
+
+    function r_changer() {
+      setColor();
+      send('R', r.value);
+      r_out.value = r.value;
+    }
+    r.addEventListener('change', function () {
+      r_changer();
+    }, false);
+
+    r.addEventListener('input', function () {
+      r_changer();
+    }, false);
+
+    function g_changer() {
+      setColor();
+      send('G', g.value);
+      g_out.value = g.value;
+    }
+
+    g.addEventListener('change', function () {
+      g_changer();
+    }, false);
+
+    g.addEventListener('input', function () {
+      g_changer();
+    }, false);
+
+    function b_changer() {
+      setColor();
+      send('B', b.value);
+      b_out.value = b.value;
+    }
+
+    b.addEventListener('change', function () {
+      b_changer();
+    }, false);
+
+    b.addEventListener('input', function () {
+      b_changer();
+    }, false);
+</script>
+
+</html>
