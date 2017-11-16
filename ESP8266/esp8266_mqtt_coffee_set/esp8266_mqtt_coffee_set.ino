@@ -31,7 +31,7 @@
 const char* ssid = "XXSSIDXX";//<-- CHANGE THIS
 const char* password = "XXPASSXX";//<-- CHANGE THIS
 const char* mqtt_server = "192.168.1.X";//<-- CHANGE THIS
-const int OUTD0 = 16;     // the number of the pushbutton pin
+const int COFFEE_RELAY = 16;     // the number of the pushbutton pin//<-- CHANGE THIS (if you want)
 
 bool led = false;
 WiFiClient espClient;
@@ -42,8 +42,8 @@ int value = 0;
 
 void setup() {
   pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
-  pinMode(OUTD0, OUTPUT);
-  digitalWrite(OUTD0, LOW); 
+  pinMode(COFFEE_RELAY, OUTPUT);
+  digitalWrite(COFFEE_RELAY, LOW); 
   
   Serial.begin(115200);
   setup_wifi();
@@ -95,13 +95,13 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
   // Switch on the LED if an 1 was received as first character
   if ((char)payload[0] == '1') {
-    digitalWrite(OUTD0, HIGH);
+    digitalWrite(COFFEE_RELAY, HIGH);
     delay(300);
-    digitalWrite(OUTD0, LOW);
+    digitalWrite(COFFEE_RELAY, LOW);
     // but actually the LED is on; this is because
     // it is acive low on the ESP-01)
   } else {
-    digitalWrite(OUTD0, LOW);
+    digitalWrite(COFFEE_RELAY, LOW);
   }
 
 }
@@ -111,9 +111,9 @@ void reconnect() {
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
     // Attempt to connect
-    if (client.connect("ESP8266-Coffee")) {
+    if (client.connect("ESP8266-Coffee")) {//<-- CHANGE THIS (if you want)
       Serial.println("connected");
-      client.subscribe("TOPIC_TO_RECEIVE_1");//<-- CHANGE THIS
+      client.subscribe("TOPIC_TO_RECEIVE_COFFEE_BIT");//<-- CHANGE THIS
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
