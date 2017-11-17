@@ -1,12 +1,8 @@
-# MqtPi
-IOT/Home Automation with MQTT on Raspberry Pi
-Maker: Jonathan van Rijn (jhonniedj)
-
-## Get Started
+# Getting Started
 >To get started, we need to initialise some settings on the raspberry pi.
 ><br>First we start with a clean Raspberry pi, with a Raspbian Lite or Full/Desktop OS
 
-### **Updating the Rpi**:
+## **Updating the Rpi**:
 >`sudo rpi-update` for latest kernel
 ><br>`sudo rpi-update 52241088c1da59a359110d39c1875cda56496764` for kernel 4.4.50+ (stable for pilight)
 ><br>`sudo rpi-update b9becbbf3f48e39f719ca6785d23c53ee0cdbe49` for kernel 4.9.41+
@@ -14,14 +10,14 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br>`sudo apt-get upgrade`
 ><br>`sudo apt-get dist-upgrade`
 
-### **Customizing your Rpi:** *(optional)*
+## **Customizing your Rpi:** *(optional)*
 >`sudo raspi-config`
 ><br>(change hostname)
 ><br>(change password)
 ><br>Removing MOTD:
 >`sudo nano /etc/motd`, then remove all lines and save with CTRL+X, Y
 
-### **Installing latest current node.js:**
+## **Installing latest current node.js:**
 >`sudo apt-get install node -y`
 ><br>(updating)
 ><br>`wget https://nodejs.org/dist/v8.7.0/node-v8.7.0-linux-armv6l.tar.xz` for current
@@ -33,20 +29,20 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br>(checking if version is updated)
 ><br>`node -v`
 
-### **Installing NPM (node package manager):**
+## **Installing NPM (node package manager):**
 >`sudo apt-get install npm -y`
-### **Installing NPM-packages**
+## **Installing NPM-packages**
 >`sudo apt-get install pigpio -y`
 ><br>`sudo npm install --unsafe-perm pigpio`
 ><br>`sudo npm install --unsafe-perm midi`
 ><br>`sudo npm install mqtt`
-### **Installing PM2** *(optional)*
+## **Installing PM2** *(optional)*
 >`sudo npm install pm2 -g`
 >`sudo pm2 startup` to run at startup
 ><br>*PM2 can be used to run node.js scripts at startup,*
 ><br>*monitor scripts or to keep scripts running*
 
-### **Run a script as a PM2 service (optional)**
+## **Run a script as a PM2 service (optional)**
 > `sudo pm2 start test.js -e test-err.log -o test-out.log --watch -i max`
 ><br> `sudo pm2 start test.js -e test-err.log -o test-out.log -i max`
 ><br> `sudo pm2 list`
@@ -62,12 +58,12 @@ Maker: Jonathan van Rijn (jhonniedj)
 ><br> ~~`ps aux | grep pm2` to check if nodes are running~~
 ><br> ~~`sudo kill -9 <PROCESS ID>` to kill nodes~~
 
-### **Installing MQTT Broker Mosquitto:**
+## **Installing MQTT Broker Mosquitto:**
 >`sudo apt-get install mosquitto mosquitto-clients`
 ><br>subscribe test with:`mosquitto_sub -t topic`
 ><br>publish test with:`mosquitto_pub -t topic -m message`
 
-### **Installing Samba:**
+## **Installing Samba:**
 >`sudo apt-get install samba samba-common-bin`
 ><br>`sudo nano /etc/samba/smb.conf`
 ><br>
