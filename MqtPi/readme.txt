@@ -1,0 +1,1 @@
+Replace google-services.json with your own firebase created google-services.json
