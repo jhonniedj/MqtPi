@@ -2,7 +2,7 @@
 <br>IOT/Home Automation with MQTT on Raspberry Pi
 <br>Maker: Jonathan van Rijn (jhonniedj)
 <br>
-<br>[Schematic](https://raw.githubusercontent.com/jhonniedj/MqtPi/master/docs/schematic.png)
+<br>![Schematic](https://raw.githubusercontent.com/jhonniedj/MqtPi/master/docs/schematic.png)
 <br>
 <br>[Official Project](https://github.com/jhonniedj/MqtPi/blob/master/docs/Jonathan%20van%20Rijn%20-%20MqtPi.pdf)
 <br>
