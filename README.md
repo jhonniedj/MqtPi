@@ -9,7 +9,7 @@
 <br>[![WiFi Enabled Ledstrip](https://img.youtube.com/vi/KrMtUphwrGs/2.jpg)](https://www.youtube.com/watch?v=KrMtUphwrGs) [![WiFi Enabled Coffee](https://img.youtube.com/vi/FyQZp8qT0mo/1.jpg)](https://www.youtube.com/watch?v=FyQZp8qT0mo) [![WiFi Enabled Doorbell button](https://img.youtube.com/vi/4bbbwD3Qy8I/2.jpg)](https://www.youtube.com/watch?v=4bbbwD3Qy8I) [![ WiFi Enabled Doorbell actuator](https://img.youtube.com/vi/7lZg606AFlQ/3.jpg)](https://www.youtube.com/watch?v=7lZg606AFlQ)
 <br>
 
-  | 
+Video | Description
 ------------- | -------------
 Content Cell  | Content Cell
 Content Cell  | Content Cell
