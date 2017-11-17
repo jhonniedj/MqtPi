@@ -3,6 +3,7 @@
 <br>Maker: Jonathan van Rijn (jhonniedj)
 <br>
 <br>[Official Project Plan](https://github.com/jhonniedj/MqtPi/blob/Stable_1.0/docs/Jonathan%20van%20Rijn%20-%20MqtPi.pdf)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/KrMtUphwrGs/0.jpg)](https://www.youtube.com/watch?v=KrMtUphwrGs)
 <br>
 ## Raspberry Pi getting started
 [Headless setup](https://github.com/jhonniedj/MqtPi/tree/Stable_1.0/docs/headless%20setup)
