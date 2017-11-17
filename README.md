@@ -4,11 +4,11 @@
 <br>
 <br>[Official Project](https://github.com/jhonniedj/MqtPi/blob/master/docs/Jonathan%20van%20Rijn%20-%20MqtPi.pdf)
 <br>
-<br>## Raspberry Pi getting started
+<br> ## Raspberry Pi getting started
 <br>[Headless setup](https://github.com/jhonniedj/MqtPi/tree/master/headless%20setup)
 <br>[Quickstart](https://github.com/jhonniedj/MqtPi/blob/master/docs/Quickstart.md)
 <br>
-<br>## Raspberry Pi additions
+<br> ## Raspberry Pi additions
 <br>[Pilight](https://github.com/jhonniedj/MqtPi/blob/master/docs/Pilight.md)
 <br>[MIDI](https://github.com/jhonniedj/MqtPi/blob/master/docs/USB%20MIDI.md)
 <br>[piscope](https://github.com/jhonniedj/MqtPi/blob/master/docs/piscope.md)
