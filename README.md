@@ -11,7 +11,7 @@
 ## Raspberry Pi additions
 [Pilight](https://github.com/jhonniedj/MqtPi/blob/master/docs/Pilight.md)
 <br>[MIDI](https://github.com/jhonniedj/MqtPi/blob/master/docs/USB%20MIDI.md)
-<br>[piscope](https://github.com/jhonniedj/MqtPi/blob/master/docs/piscope.md)
+<br>[Piscope](https://github.com/jhonniedj/MqtPi/blob/master/docs/piscope.md)
 <br>[DMX/Serial](https://github.com/jhonniedj/MqtPi/blob/master/docs/Hi-speed%20Serial.md)
 <br>[Raspberry Video Playout](https://github.com/jhonniedj/MqtPi/blob/master/docs/HDMI%20Video.md)
 <br>
