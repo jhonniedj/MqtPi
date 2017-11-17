@@ -1,4 +1,4 @@
-# pilight
+# Pilight
 To work with 433Mhz sender/receiver, to remote control your power sockets,
 or any other klik-aan-klik-uit related devices, you may need pilight.
 

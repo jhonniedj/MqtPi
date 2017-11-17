@@ -1,4 +1,4 @@
-# Getting Started
+# Quickstart
 >To get started, we need to initialise some settings on the raspberry pi.
 ><br>First we start with a clean Raspberry pi, with a Raspbian Lite or Full/Desktop OS
 

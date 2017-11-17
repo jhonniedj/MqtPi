@@ -1,4 +1,4 @@
-# piscope (oscilloscope view for Raspberry Pi)
+# Piscope (oscilloscope view for Raspberry Pi)
 To check GPIO pin state, piscope is very convenient!
 <br>you need to install Xming - http://www.straightrunning.com/XmingNotes/
 <br>and set Putty to X11 by SSH - X11 - Enable X11 Forwarding in the Putty properties

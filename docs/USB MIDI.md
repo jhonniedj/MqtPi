@@ -1,4 +1,4 @@
-# MIDI
+# USB MIDI
 
 ### **Checking MIDI Devices**:
 >`aconnect -o` for connected MIDI Devices
