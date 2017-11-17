@@ -4,13 +4,20 @@
 <br>
 <br>[Official Project Plan](https://github.com/jhonniedj/MqtPi/blob/Stable_1.0/docs/Jonathan%20van%20Rijn%20-%20MqtPi.pdf)
 <br>
+
+## Video's
 <br>[![WiFi Enabled Ledstrip](https://img.youtube.com/vi/KrMtUphwrGs/2.jpg)](https://www.youtube.com/watch?v=KrMtUphwrGs) [![WiFi Enabled Coffee](https://img.youtube.com/vi/FyQZp8qT0mo/1.jpg)](https://www.youtube.com/watch?v=FyQZp8qT0mo) [![WiFi Enabled Doorbell button](https://img.youtube.com/vi/4bbbwD3Qy8I/2.jpg)](https://www.youtube.com/watch?v=4bbbwD3Qy8I) [![ WiFi Enabled Doorbell actuator](https://img.youtube.com/vi/7lZg606AFlQ/3.jpg)](https://www.youtube.com/watch?v=7lZg606AFlQ)
-<br>     WiFi Ledstrip     |     WiFi Coffee     |     WiFi Doorbell button     |     WiFi Doorbell
 <br>
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
 ## Raspberry Pi getting started
 [Headless setup](https://github.com/jhonniedj/MqtPi/tree/Stable_1.0/docs/headless%20setup)
 <br>[Quickstart](https://github.com/jhonniedj/MqtPi/blob/Stable_1.0/docs/Quickstart.md)
 <br>
+
 ## Raspberry Pi additions
 [Pilight](https://github.com/jhonniedj/MqtPi/blob/Stable_1.0/docs/Pilight.md)
 <br>[MIDI](https://github.com/jhonniedj/MqtPi/blob/Stable_1.0/docs/USB%20MIDI.md)
