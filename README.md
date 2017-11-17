@@ -3,10 +3,11 @@
 <br>Maker: Jonathan van Rijn (jhonniedj)
 <br>
 <br>[Official Project Plan](https://github.com/jhonniedj/MqtPi/blob/Stable_1.0/docs/Jonathan%20van%20Rijn%20-%20MqtPi.pdf)
-<br>[![WiFi Enabled Ledstrip](https://img.youtube.com/vi/KrMtUphwrGs/2.jpg)](https://www.youtube.com/watch?v=KrMtUphwrGs) | WiFi Ledstrip 
-<br>[![WiFi Enabled Coffee](https://img.youtube.com/vi/FyQZp8qT0mo/1.jpg)](https://www.youtube.com/watch?v=FyQZp8qT0mo) | WiFi Coffee
-<br>[![WiFi Enabled Doorbell button](https://img.youtube.com/vi/4bbbwD3Qy8I/2.jpg)](https://www.youtube.com/watch?v=4bbbwD3Qy8I) | WiFi Doorbell button
-<br>[![ WiFi Enabled Doorbell actuator](https://img.youtube.com/vi/7lZg606AFlQ/3.jpg)](https://www.youtube.com/watch?v=7lZg606AFlQ) | WiFi Doorbell
+<br>
+[![WiFi Enabled Ledstrip](https://img.youtube.com/vi/KrMtUphwrGs/2.jpg)](https://www.youtube.com/watch?v=KrMtUphwrGs) | WiFi Ledstrip 
+[![WiFi Enabled Coffee](https://img.youtube.com/vi/FyQZp8qT0mo/1.jpg)](https://www.youtube.com/watch?v=FyQZp8qT0mo) | WiFi Coffee
+[![WiFi Enabled Doorbell button](https://img.youtube.com/vi/4bbbwD3Qy8I/2.jpg)](https://www.youtube.com/watch?v=4bbbwD3Qy8I) | WiFi Doorbell button
+[![ WiFi Enabled Doorbell actuator](https://img.youtube.com/vi/7lZg606AFlQ/3.jpg)](https://www.youtube.com/watch?v=7lZg606AFlQ) | WiFi Doorbell
 <br>
 ## Raspberry Pi getting started
 [Headless setup](https://github.com/jhonniedj/MqtPi/tree/Stable_1.0/docs/headless%20setup)
