@@ -2,6 +2,9 @@
 <br>IOT/Home Automation with MQTT on Raspberry Pi
 <br>Maker: Jonathan van Rijn (jhonniedj)
 <br>
+| Attempt | #1 | #2 |
+| :---: | :---: | :---: |
+| Seconds | 301 | 283 |
 <br>[Official Project Plan](https://github.com/jhonniedj/MqtPi/blob/Stable_1.0/docs/Jonathan%20van%20Rijn%20-%20MqtPi.pdf)
 <br>WiFi Enabled Ledstrip
 <br>[![WiFi Enabled Ledstrip](https://img.youtube.com/vi/KrMtUphwrGs/2.jpg)](https://www.youtube.com/watch?v=KrMtUphwrGs)
