@@ -2,9 +2,10 @@
 To work with 433Mhz sender/receiver, to remote control your power sockets,
 or any other klik-aan-klik-uit related devices, you may need pilight.
 
-## Downgrade the kernel (since 4.9 does not work for pilight)
+## Downgrade the kernel is no longer needed since Pilight 8.0
+~~## Downgrade the kernel (since 4.9 does not work for pilight)
 > `sudo rpi-update 52241088c1da59a359110d39c1875cda56496764`
-><br> `sudo reboot`
+><br> `sudo reboot`~~
 
 ## Install pilight apt package
 > `sudo nano /etc/apt/sources.list`
@@ -16,7 +17,10 @@ or any other klik-aan-klik-uit related devices, you may need pilight.
 ><br> `sudo nano /etc/pilight/config.json`
 ><br> check and configure your pins according to:
 ><br> - https://pinout.xyz/#
-><br> - http://manual.pilight.org/configuration/hardware.html#gpio
+><br> - http://manual.pilight.org/configuration/hardware.html#gpio (using wiringpi numbering)
+><br> set `"webserver-enable": 0,` if you need/want to
+><br> set `gpio-platform": "raspberrypizero"` if you need/want to
+
 ><br>
 ><br> `sudo pilight-daemon`
 ><br> `sudo pilight-receive` to check for 433Mhz packages
