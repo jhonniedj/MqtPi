@@ -54,3 +54,16 @@ ffmpeg -i http://stream.sublimefm.nl/SublimeFM_aac -f alsa plughw:1,0 -vol 1
 omxplayer http://stream.sublimefm.nl/SublimeFM_mp3 -o alsa:plughw:1,0
 omxplayer http://stream.sublimefm.nl/SublimeFM_mp3 -o alsa:plughw:0,0 --vol "-2000" --no-keys &
 pkill omxplayer 
+
+
+BETTER:
+
+sudo apt-get install mpd mpc
+
+mpc add http://stream.sublimefm.nl/SublimeFM_mp3
+mpc play 
+sudo nano /etc/mpd.conf
+under audio-output:
+#       mixer_type      "hardware"      # optional --> mixer_type      "software"      # optional
+set volume to n (in procent)
+mpc volume n 

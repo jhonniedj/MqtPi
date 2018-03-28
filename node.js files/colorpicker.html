@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-title" content="MqtPi">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="viewport" content="width = 200, initial-scale = 1.5, user-scalable = no">
+  <meta name="viewport" content="width = 260, initial-scale = 1.2, user-scalable = no">
 </head>
 
 <body>
@@ -14,7 +14,51 @@
   <script>
     var HOST = "micropi";
     $(document).ready(function () {
-      ;
+      $("#red_plus").click(function () {
+        $('#r').val(function (i, oldval) { return ++oldval; });
+        r_changer();
+      });
+      $("#red_min").click(function () {
+        $('#r').val(function (i, oldval) { return --oldval; });
+        r_changer();
+      });
+
+      $("#green_plus").click(function () {
+        $('#g').val(function (i, oldval) { return ++oldval; });
+        g_changer();
+      });
+      $("#green_min").click(function () {
+        $('#g').val(function (i, oldval) { return --oldval; });
+        g_changer();
+      });
+
+      $("#blue_plus").click(function () {
+        $('#b').val(function (i, oldval) { return ++oldval; });
+        b_changer();
+      });
+      $("#blue_min").click(function () {
+        $('#b').val(function (i, oldval) { return --oldval; });
+        b_changer();
+      });
+
+      $("#all_plus").click(function () {
+        $('#r').val(function (i, oldval) { return ++oldval; });
+        $('#g').val(function (i, oldval) { return ++oldval; });
+        $('#b').val(function (i, oldval) { return ++oldval; });
+        r_changer();
+        g_changer();
+        b_changer();
+      });
+
+      $("#all_min").click(function () {
+        $('#r').val(function (i, oldval) { return --oldval; });
+        $('#g').val(function (i, oldval) { return --oldval; });
+        $('#b').val(function (i, oldval) { return --oldval; });
+        r_changer();
+        g_changer();
+        b_changer();
+      });
+
     });
     function send(send_data, send_value) {
       if (send_data === 'led') {
@@ -25,11 +69,6 @@
       if (send_data === 'xmas') {
         $.ajax({
           url: 'http://' + HOST + ':8080/', type: 'GET', data: { xmas: send_value }, success: function (msg) { }
-        });
-      }
-      if (send_data === 'bath') {
-        $.ajax({
-          url: 'http://' + HOST + ':8080/', type: 'GET', data: { bath: send_value }, success: function (msg) { }
         });
       }
       if (send_data === 'lamp') {
@@ -61,76 +100,39 @@
     }
   </script>
 
-  <table style="width:200px">
-    <tr>
-      <td>Lamp</td> 
-    </tr>
-    <tr>
-      <td>
-        <button type="button" onclick="send('lamp','1');" style="width:90px">ON</button>
-      </td>
-      <td>
-        <button type="button" onclick="send('lamp','0');" style="width:90px">OFF</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Verst</td> 
-    </tr>
-    <tr>
-      <td>
-        <button type="button" onclick="send('amp','1');" style="width:90px">ON</button>
-      </td>
-      <td>
-        <button type="button" onclick="send('amp','0');" style="width:90px">OFF</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Xmas</td>    
-    </tr>
-    <tr>
-      <td>
-        <button type="button" onclick="send('xmas','1');" style="width:90px">ON</button>
-      </td>
-      <td>
-        <button type="button" onclick="send('xmas','0');" style="width:90px">OFF</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Douche</td>    
-    </tr>
-    <tr>
-      <td>
-        <button type="button" onclick="send('bath','1');" style="width:90px">ON</button>
-      </td>
-      <td>
-        <button type="button" onclick="send('bath','0');" style="width:90px">OFF</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Ledstrip</td> 
-    </tr>
-    <tr>
-      <td>
-        <button type="button" onclick="send('led','1');" style="width:90px">ON</button>
-      </td>
-      <td>
-        <button type="button" onclick="send('led','0');" style="width:90px">OFF</button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <button type="button" onclick="send('led','sleep');" style="width:90px">Short on</button>
-      </td>
-      <td>
-        <button type="button" onclick="send('led','dimm');" style="width:90px">Low bright</button>
-      </td>
-    </tr>
-  </table>
-  
-  <center>
-    <button type="button" onclick="document.location.href='colorpicker.html';" style="width:90px">Colorpicker</button>
+<fieldset>
+  <label for="r">R</label>
+  <input type="range" min="0" max="255" id="r" step="1" value="0">
+  <output for="r" id="r_out">0</output>
+</fieldset>
+<button id="red_min" style="width:70px;height:30px">-</button>  <button id="red_plus" style="width:70px;height:30px">+</button>
+
+
+<fieldset>
+  <label for="g">G</label>
+  <input type="range" min="0" max="255" id="g" step="1" value="0">
+  <output for="g" id="g_out">0</output>
+</fieldset>
+<button id="green_min" style="width:70px;height:30px">-</button> <button id="green_plus" style="width:70px;height:30px">+</button>
+
+<fieldset>
+  <label for="b">B</label>
+  <input type="range" min="0" max="255" id="b" step="1" value="0">
+  <output for="b" id="b_out">0</output>
+</fieldset>
+<button id="blue_min" style="width:70px;height:30px">-</button>  <button id="blue_plus" style="width:70px;height:30px">+</button>
+<br>
+<output id="hex">#000000</output>
+<br>
+<button id="all_min" style="width:70px;height:30px">-</button><button id="all_plus" style="width:70px;height:30px">+</button>
+<br>
+<br>
+
+<center>
+    <button type="button" onclick="document.location.href='index.html';" style="width:90px">Back</button>
     <br><button type="button" onClick="history.go(0)" style="width:90px">Refresh</button>
   </center>
+
 </body>
 
 
@@ -139,7 +141,7 @@
   body {
     /*background-color: rgb(0, 0, 0);*/
     font-family: 'Roboto', sans-serif;
-    text-align: left;
+    text-align: center;
     padding: 0 0 0 0;
   }
 
@@ -154,7 +156,7 @@
 
   label,
   output {
-    padding: 2px 9px;
+    padding: 2px 6px;
     border-radius: 3px;
     font-family: 'Roboto', sans-serif;
     color: #000;

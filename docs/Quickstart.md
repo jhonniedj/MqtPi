@@ -1,3 +1,7 @@
+
+fsck.mode=force --> /boot/cmdline.txt
+
+
 # Quickstart
 >To get started, we need to initialise some settings on the raspberry pi.
 ><br>First we start with a clean Raspberry pi, with a Raspbian Lite or Full/Desktop OS
@@ -113,3 +117,31 @@
 ><br>`sudo raspi-config` to set timezone
 ><br>~~`sudo apt-get install ntpdate`~~
 ><br>~~`sudo ntpdate nl.pool.ntp.org`~~
+
+
+>- **Disable startup** 
+><br>`sudo nano /boot/config.txt` and edit:
+><br>disable_splash=1
+><br>`sudo nano /boot/cmdline.txt` and add:
+><br>splash quiet plymouth.ignore-serial-consoles logo.nologo vt.global_cursor_default=0 (clears ALL!)
+><br>or
+><br>splash quiet logo.nologo vt.global_cursor_default=0 (gives loadingscreen)
+><br>and change:
+><br>console=tty1 --> console=tty3
+><br>
+><br>`sudo systemctl disable getty@tty1.service` to disable TTY1 and clear all together with ignore-serial
+><br>`sudo crontab -e`
+><br>add:
+><br>@reboot sleep 10 && /usr/bin/fbi -T 1 /home/pi/ww_black.png --noverbose
+><br>
+><br>
+><br>sudo plymouth-set-default-theme -l
+><br>sudo plymouth-set-default-theme -R tribar
+><br>splashscreen test: `sudo cp ~/splash.png /usr/share/plymouth/themes/pix/splash.png` (not tested)
+
+>- **CLEANUP**
+>CLEAR BASH HISTORY:
+>`sudo rm .bash_history`
+
+
+

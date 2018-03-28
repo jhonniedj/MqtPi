@@ -6,7 +6,7 @@ var app = express();
 var port = process.env.PORT || 8080;
 
 var mqtt = require('mqtt');
-var HOST = "micropi";
+var HOST = "localhost";
 var client = mqtt.connect('mqtt://' + HOST);
 client.on('connect', function () {
     //client.subscribe('gpio/#');
@@ -17,12 +17,16 @@ client.on('connect', function () {
 // start the server
 app.listen(port);
 app.get('/', function (req, res) {
+    var led = req.query['led'];
+    if (led) { client.publish('gpio/led', led); }
+    var xmas = req.query['xmas'];
+    if (xmas) { client.publish('gpio/xmas', xmas); }
+    var bath = req.query['bath'];
+    if (bath) { client.publish('gpio/bath', bath); }
     var lamp = req.query['lamp'];
-    if (lamp === "0") { client.publish('gpio/lamp', '0'); }
-    if (lamp === "1") { client.publish('gpio/lamp', '1'); }
+    if (lamp) { client.publish('gpio/lamp', lamp); }
     var amp = req.query['amp'];
-    if (amp === "0") { client.publish('gpio/amp', '0'); }
-    if (amp === "1") { client.publish('gpio/amp', '1'); }
+    if (amp) { client.publish('gpio/amp', amp); }
     var r = req.query['R'];
     if (r) { client.publish('gpio/red', r); }
     var g = req.query['G'];
